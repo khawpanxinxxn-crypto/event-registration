@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ลงทะเบียน — Tech Summit 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- ══════════════════════════════════════
+         HERO BANNER
+    ══════════════════════════════════════ -->
+    <header class="hero">
+      <div class="hero__inner">
+
+        <!-- Organizer bar -->
+        <div class="org-bar">
+          <span class="org-bar__dot"></span>
+          <span>จัดโดย สมาคมเทคโนโลยีไทย · ร่วมกับ NECTEC</span>
+        </div>
+
+        <!-- Event name -->
+        <h1 class="event-title">Tech Summit 2026</h1>
+        <p class="event-tagline">Thailand's Premier Technology Conference</p>
+
+        <!-- Divider -->
+        <div class="hero__divider"></div>
+
+        <!-- Meta row -->
+        <div class="meta-row">
+          <div class="meta-item">
+            <svg class="meta-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <div>
+              <span class="meta-item__label">วันที่</span>
+              <span class="meta-item__value">เสาร์ที่ 15 พฤศจิกายน 2569</span>
+            </div>
+          </div>
+          <div class="meta-item">
+            <svg class="meta-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+            <div>
+              <span class="meta-item__label">เวลา</span>
+              <span class="meta-item__value">08:00 – 17:00 น.</span>
+            </div>
+          </div>
+          <div class="meta-item">
+            <svg class="meta-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <div>
+              <span class="meta-item__label">สถานที่</span>
+              <span class="meta-item__value">BITEC บางนา กรุงเทพฯ</span>
+            </div>
+          </div>
+          <div class="meta-item">
+            <svg class="meta-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+            <div>
+              <span class="meta-item__label">ค่าเข้าร่วม</span>
+              <span class="meta-item__value meta-item__value--free">ไม่มีค่าใช้จ่าย</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- ══════════════════════════════════════
+         REGISTRATION FORM
+    ══════════════════════════════════════ -->
+    <section class="reg-section" id="register" aria-label="แบบฟอร์มลงทะเบียน">
+      <div class="reg-section__inner">
+
+        <div class="reg-header">
+          <span class="reg-header__eyebrow">สมัครเข้าร่วมงาน</span>
+          <h2 class="reg-header__title">ลงทะเบียนฟรี</h2>
+          <p class="reg-header__desc">
+            กรอกข้อมูลให้ครบถ้วน ระบบจะบันทึกการลงทะเบียนของคุณทันที<br />
+            <strong>จำกัดเพียง 500 ที่นั่งเท่านั้น</strong>
+          </p>
+        </div>
+
+        <form id="registrationForm" class="form" novalidate>
+
+          <div class="form-group" id="group-name">
+            <label class="form-label" for="fullName">
+              ชื่อ-นามสกุล <span class="req">*</span>
+            </label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              class="form-input"
+              placeholder="เช่น สมชาย ใจดี"
+              autocomplete="name"
+              required
+              aria-required="true"
+              aria-describedby="error-name"
+            />
+            <p class="form-error" id="error-name" role="alert" aria-live="polite"></p>
+          </div>
+
+          <div class="form-group" id="group-email">
+            <label class="form-label" for="email">
+              อีเมล <span class="req">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="example@email.com"
+              autocomplete="email"
+              required
+              aria-required="true"
+              aria-describedby="error-email"
+            />
+            <p class="form-error" id="error-email" role="alert" aria-live="polite"></p>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <span class="btn-submit__text">ยืนยันการลงทะเบียน</span>
+            <span class="btn-submit__spinner" aria-hidden="true"></span>
+          </button>
+
+          <p class="form-note">
+            ข้อมูลส่วนตัวของท่านจะถูกเก็บเป็นความลับและใช้เพื่อการจัดงานเท่านั้น
+          </p>
+
+        </form>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         ABOUT + HIGHLIGHTS
+    ══════════════════════════════════════ -->
+    <section class="about">
+      <div class="about__inner">
+
+        <div class="about__text">
+          <h2 class="section-heading">เกี่ยวกับงาน</h2>
+          <p>
+            Tech Summit 2026 คืองานสัมมนาด้านเทคโนโลยีและนวัตกรรมดิจิทัลระดับชาติ
+            รวบรวมผู้นำองค์กร นักพัฒนา และนักธุรกิจดิจิทัลกว่า <strong>500 คน</strong>
+            มาแลกเปลี่ยนความรู้ อัปเดตเทรนด์ และสร้างเครือข่ายในวันเดียวกัน
+          </p>
+        </div>
+
+        <div class="highlights">
+          <h2 class="section-heading">ไฮไลต์ภายในงาน</h2>
+          <ul class="hl-list">
+            <li class="hl-item">
+              <span class="hl-item__num">01</span>
+              <div>
+                <strong>Keynote Session</strong>
+                <p>ผู้บริหารระดับสูงจาก Tech Company ชั้นนำของไทยและต่างประเทศ</p>
+              </div>
+            </li>
+            <li class="hl-item">
+              <span class="hl-item__num">02</span>
+              <div>
+                <strong>Workshop: AI &amp; Machine Learning</strong>
+                <p>ลงมือปฏิบัติจริงกับเครื่องมือ AI สำหรับธุรกิจ</p>
+              </div>
+            </li>
+            <li class="hl-item">
+              <span class="hl-item__num">03</span>
+              <div>
+                <strong>Panel Discussion</strong>
+                <p>อนาคต Startup ไทยในยุค Generative AI</p>
+              </div>
+            </li>
+            <li class="hl-item">
+              <span class="hl-item__num">04</span>
+              <div>
+                <strong>Networking &amp; Exhibition</strong>
+                <p>พื้นที่พบปะ แลกนามบัตร และชมนิทรรศการเทคโนโลยี</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════ -->
+    <footer class="footer">
+      <div class="footer__inner">
+        <p class="footer__brand">Tech Summit 2026</p>
+        <p class="footer__copy">
+          จัดโดย สมาคมเทคโนโลยีไทย &nbsp;|&nbsp;
+          สอบถาม <a href="mailto:info@techsummit2026.com">info@techsummit2026.com</a>
+        </p>
+        <p class="footer__copy">© 2026 Tech Summit. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </div><!-- /page -->
+
+  <!-- ══════════════════════════════════════
+       SUCCESS MODAL
+  ══════════════════════════════════════ -->
+  <div class="modal-overlay" id="successModal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal">
+      <div class="modal__check" aria-hidden="true">
+        <svg viewBox="0 0 52 52" fill="none" aria-hidden="true">
+          <circle cx="26" cy="26" r="25" stroke="#1d4ed8" stroke-width="2"/>
+          <path d="M14 27l8 8 16-16" stroke="#1d4ed8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2 class="modal__title" id="modal-title">ลงทะเบียนสำเร็จ</h2>
+      <p class="modal__msg">ขอบคุณที่ลงทะเบียนเข้าร่วม<br /><strong>Tech Summit 2026</strong></p>
+      <p class="modal__email" id="modal-email-note"></p>
+      <button class="modal__btn" id="modalCloseBtn">ปิดหน้าต่างนี้</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       ERROR TOAST
+  ══════════════════════════════════════ -->
+  <div class="toast" id="errorToast" role="alert" aria-live="assertive" aria-atomic="true">
+    <svg class="toast__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <span id="toastMessage"></span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
