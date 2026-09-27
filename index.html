@@ -11,230 +11,297 @@
 </head>
 <body>
 
-  <!-- ░░ BACKGROUND ░░ -->
-  <div class="bg" aria-hidden="true">
-    <div class="bg__blob bg__blob--1"></div>
-    <div class="bg__blob bg__blob--2"></div>
-    <div class="bg__blob bg__blob--3"></div>
-    <div class="bg__grid"></div>
+<!-- ══════════════════════════════════════════
+     HERO BANNER — cityscape + floating graphics
+══════════════════════════════════════════ -->
+<header class="hero">
+
+  <!-- Sky gradient background -->
+  <div class="hero__sky" aria-hidden="true"></div>
+
+  <!-- City buildings (SVG) -->
+  <div class="hero__city" aria-hidden="true">
+    <svg viewBox="0 0 1200 340" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+      <!-- Far buildings (lighter) -->
+      <g opacity=".25" fill="#90c4f8">
+        <rect x="0"   y="180" width="55"  height="160"/>
+        <rect x="10"  y="140" width="30"  height="200"/>
+        <rect x="60"  y="160" width="45"  height="180"/>
+        <rect x="110" y="120" width="35"  height="220"/>
+        <rect x="150" y="150" width="50"  height="190"/>
+        <rect x="205" y="110" width="40"  height="230"/>
+        <rect x="250" y="170" width="30"  height="170"/>
+        <rect x="900" y="150" width="50"  height="190"/>
+        <rect x="955" y="120" width="35"  height="220"/>
+        <rect x="995" y="160" width="45"  height="180"/>
+        <rect x="1045" y="140" width="30" height="200"/>
+        <rect x="1080" y="170" width="55" height="170"/>
+        <rect x="1140" y="110" width="40" height="230"/>
+      </g>
+      <!-- Mid buildings -->
+      <g opacity=".4" fill="#60a5fa">
+        <rect x="280" y="200" width="60"  height="140"/>
+        <rect x="295" y="160" width="28"  height="180"/>
+        <rect x="345" y="180" width="55"  height="160"/>
+        <rect x="405" y="130" width="38"  height="210"/>
+        <rect x="448" y="200" width="28"  height="140"/>
+        <rect x="750" y="200" width="60"  height="140"/>
+        <rect x="815" y="160" width="40"  height="180"/>
+        <rect x="860" y="130" width="35"  height="210"/>
+      </g>
+      <!-- Main tall buildings -->
+      <g fill="#3b82f6" opacity=".6">
+        <!-- Wat Arun silhouette inspired -->
+        <rect x="480" y="80"  width="18"  height="260"/>
+        <rect x="470" y="140" width="38"  height="200"/>
+        <rect x="460" y="200" width="58"  height="140"/>
+        <!-- Modern tower left -->
+        <rect x="530" y="100" width="50"  height="240"/>
+        <rect x="535" y="60"  width="12"  height="280"/>
+        <!-- Skyscraper center -->
+        <rect x="590" y="50"  width="60"  height="290"/>
+        <rect x="605" y="20"  width="10"  height="320"/>
+        <rect x="618" y="30"  width="20"  height="310"/>
+        <!-- Modern tower right -->
+        <rect x="660" y="90"  width="50"  height="250"/>
+        <rect x="668" y="55"  width="12"  height="285"/>
+        <!-- Tower far right -->
+        <rect x="720" y="120" width="45"  height="220"/>
+        <rect x="730" y="80"  width="10"  height="260"/>
+      </g>
+      <!-- Window lights on buildings -->
+      <g fill="white" opacity=".35">
+        <rect x="596" y="70"  width="4" height="4"/>
+        <rect x="604" y="70"  width="4" height="4"/>
+        <rect x="612" y="70"  width="4" height="4"/>
+        <rect x="596" y="82"  width="4" height="4"/>
+        <rect x="612" y="82"  width="4" height="4"/>
+        <rect x="596" y="94"  width="4" height="4"/>
+        <rect x="604" y="94"  width="4" height="4"/>
+        <rect x="538" y="115" width="4" height="4"/>
+        <rect x="546" y="115" width="4" height="4"/>
+        <rect x="554" y="115" width="4" height="4"/>
+        <rect x="538" y="127" width="4" height="4"/>
+        <rect x="554" y="127" width="4" height="4"/>
+        <rect x="664" y="110" width="4" height="4"/>
+        <rect x="672" y="110" width="4" height="4"/>
+        <rect x="680" y="110" width="4" height="4"/>
+        <rect x="664" y="122" width="4" height="4"/>
+        <rect x="680" y="122" width="4" height="4"/>
+      </g>
+      <!-- Ground -->
+      <rect x="0" y="330" width="1200" height="20" fill="#bfdbfe" opacity=".4"/>
+    </svg>
   </div>
 
-  <div class="layout">
+  <!-- Thai flag (left) -->
+  <div class="hero__flag" aria-hidden="true">
+    <svg viewBox="0 0 60 90" width="48" height="72" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="90" fill="#fff"/>
+      <rect width="60" height="18" fill="#dc2626"/>
+      <rect y="18" width="60" height="18" fill="#fff"/>
+      <rect y="36" width="60" height="18" fill="#1d4ed8"/>
+      <rect y="54" width="60" height="18" fill="#fff"/>
+      <rect y="72" width="60" height="18" fill="#dc2626"/>
+    </svg>
+    <div class="hero__flagpole"></div>
+  </div>
 
-    <!-- ════════════════════════════
-         LEFT PANEL — Info
-    ════════════════════════════ -->
-    <aside class="left-panel">
+  <!-- Floating AI robot mascot (right) -->
+  <div class="hero__mascot" aria-hidden="true">
+    <svg viewBox="0 0 80 100" width="70" height="88" xmlns="http://www.w3.org/2000/svg">
+      <!-- Body -->
+      <rect x="20" y="40" width="40" height="45" rx="10" fill="white" opacity=".9"/>
+      <!-- Head -->
+      <rect x="22" y="18" width="36" height="28" rx="8" fill="white" opacity=".9"/>
+      <!-- Eyes -->
+      <circle cx="33" cy="30" r="5" fill="#3b82f6"/>
+      <circle cx="47" cy="30" r="5" fill="#3b82f6"/>
+      <circle cx="34" cy="29" r="2" fill="white"/>
+      <circle cx="48" cy="29" r="2" fill="white"/>
+      <!-- Antenna -->
+      <line x1="40" y1="18" x2="40" y2="8" stroke="white" stroke-width="2.5" opacity=".8"/>
+      <circle cx="40" cy="6" r="3.5" fill="#60a5fa"/>
+      <!-- Smile -->
+      <path d="M33 37 Q40 42 47 37" stroke="#3b82f6" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- Chest panel -->
+      <rect x="28" y="50" width="24" height="18" rx="4" fill="#eff6ff" opacity=".8"/>
+      <circle cx="34" cy="59" r="3" fill="#3b82f6" opacity=".7"/>
+      <circle cx="40" cy="59" r="3" fill="#60a5fa" opacity=".7"/>
+      <circle cx="46" cy="59" r="3" fill="#06b6d4" opacity=".7"/>
+      <!-- Arms -->
+      <rect x="8"  y="46" width="14" height="8" rx="4" fill="white" opacity=".8"/>
+      <rect x="58" y="46" width="14" height="8" rx="4" fill="white" opacity=".8"/>
+      <!-- Legs -->
+      <rect x="26" y="82" width="10" height="14" rx="4" fill="white" opacity=".8"/>
+      <rect x="44" y="82" width="10" height="14" rx="4" fill="white" opacity=".8"/>
+      <!-- Glow -->
+      <circle cx="40" cy="50" r="36" fill="#3b82f6" opacity=".06"/>
+    </svg>
+  </div>
 
-      <!-- Logo -->
-      <div class="logo">
-        <div class="logo__mark" aria-hidden="true">
-          <svg viewBox="0 0 36 36" fill="none">
-            <path d="M18 3L33 12V24L18 33L3 24V12L18 3Z" fill="url(#lg1)" opacity=".9"/>
-            <path d="M18 10L26 15V21L18 26L10 21V15L18 10Z" fill="white" opacity=".25"/>
-            <circle cx="18" cy="18" r="4" fill="white" opacity=".9"/>
-            <defs>
-              <linearGradient id="lg1" x1="3" y1="3" x2="33" y2="33" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#2563eb"/>
-                <stop offset="1" stop-color="#06b6d4"/>
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        <span class="logo__name">Tech Summit</span>
-        <span class="logo__badge">2026</span>
-      </div>
+  <!-- Floating particles -->
+  <div class="hero__particles" aria-hidden="true">
+    <span class="particle particle--1"></span>
+    <span class="particle particle--2"></span>
+    <span class="particle particle--3"></span>
+    <span class="particle particle--4"></span>
+    <span class="particle particle--5"></span>
+  </div>
 
-      <!-- Headline -->
-      <div class="hero-text">
-        <p class="hero-text__eyebrow">งานสัมมนาเทคโนโลยีแห่งปี</p>
-        <h1 class="hero-text__title">
-          รวม Tech Pro<br />
-          กว่า <span class="hero-text__accent">20+ วิทยากร</span>
-        </h1>
-        <p class="hero-text__sub">
-          สิทธิ์เข้าร่วมงาน<br />
-          <strong>สำหรับคนไทย ฟรี!</strong>
-        </p>
-      </div>
+  <!-- Hero content -->
+  <div class="hero__content">
 
-      <!-- Organizer logos -->
-      <div class="org-logos">
-        <div class="org-logos__item">
-          <svg viewBox="0 0 40 40" fill="none" width="36" height="36">
-            <circle cx="20" cy="20" r="18" fill="#1d4ed8" opacity=".15"/>
-            <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="10" fill="#1d4ed8" font-weight="bold">NECTEC</text>
-          </svg>
-        </div>
-        <div class="org-logos__item">
-          <svg viewBox="0 0 40 40" fill="none" width="36" height="36">
-            <circle cx="20" cy="20" r="18" fill="#0f172a" opacity=".12"/>
-            <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="9" fill="#0f172a" font-weight="bold">DEPA</text>
-          </svg>
-        </div>
-      </div>
-
-      <!-- Description -->
-      <p class="hero-desc">
-        โปรดเตรียมอีเมลที่ใช้งานได้จริง<br />
-        เพื่อรับการยืนยันการลงทะเบียน
-      </p>
-
-      <!-- Supported by -->
-      <div class="supported">
-        <p class="supported__label">Supported Partners</p>
-        <div class="supported__grid">
-          <span class="supported__chip">BytePlus</span>
-          <span class="supported__chip">ChatGPT</span>
-          <span class="supported__chip">Claude</span>
-          <span class="supported__chip">Gemini</span>
-          <span class="supported__chip">Perplexity</span>
-          <span class="supported__chip">DeepSeek</span>
-          <span class="supported__chip">Meta AI</span>
-          <span class="supported__chip">Mistral AI</span>
-        </div>
-      </div>
-
-      <!-- Timeline -->
-      <div class="timeline">
-        <p class="timeline__heading">ช่วงเวลาสำคัญ</p>
-        <ol class="timeline__list">
-          <li class="timeline__item timeline__item--active">
-            <span class="timeline__dot"></span>
-            <div>
-              <strong>15 พ.ย. 2569</strong>
-              <p>เปิดลงทะเบียนล่วงหน้า ตั้งแต่ 08:00 น.</p>
-            </div>
-          </li>
-          <li class="timeline__item">
-            <span class="timeline__dot"></span>
-            <div>
-              <strong>15 พ.ย. 2569</strong>
-              <p>วันงาน 08:00 – 17:00 น. ที่ BITEC บางนา</p>
-            </div>
-          </li>
-          <li class="timeline__item">
-            <span class="timeline__dot"></span>
-            <div>
-              <strong>30 พ.ย. 2569</strong>
-              <p>สิ้นสุดการรับสมัคร จำกัด 500 ที่นั่ง</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-
-    </aside>
-
-    <!-- ════════════════════════════
-         RIGHT PANEL — Form Card
-    ════════════════════════════ -->
-    <main class="right-panel">
-
-      <div class="form-card">
-
-        <!-- Card logo -->
-        <div class="card-logo">
-          <div class="card-logo__mark" aria-hidden="true">
-            <svg viewBox="0 0 36 36" fill="none" width="32" height="32">
-              <path d="M18 3L33 12V24L18 33L3 24V12L18 3Z" fill="url(#lg2)" opacity=".9"/>
-              <circle cx="18" cy="18" r="4" fill="white" opacity=".9"/>
-              <defs>
-                <linearGradient id="lg2" x1="3" y1="3" x2="33" y2="33">
-                  <stop stop-color="#2563eb"/>
-                  <stop offset="1" stop-color="#06b6d4"/>
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-          <span class="card-logo__name">Tech Summit <sup>2026</sup></span>
-        </div>
-
-        <p class="card-desc">เข้าสู่ระบบเพื่อลงทะเบียนเข้าร่วม</p>
-
-        <form id="registrationForm" class="form" novalidate>
-
-          <!-- ชื่อ-นามสกุล -->
-          <div class="form-group" id="group-name">
-            <label class="form-label" for="fullName">ชื่อ-นามสกุล <span class="req">*</span></label>
-            <div class="input-wrap">
-              <svg class="input-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10 10a4 4 0 100-8 4 4 0 000 8zm-7 8a7 7 0 0114 0"/></svg>
-              <input
-                type="text"
-                id="fullName"
-                name="fullName"
-                class="form-input"
-                placeholder="เช่น สมชาย ใจดี"
-                autocomplete="name"
-                required
-                aria-required="true"
-                aria-describedby="error-name"
-              />
-            </div>
-            <p class="form-error" id="error-name" role="alert" aria-live="polite"></p>
-          </div>
-
-          <!-- อีเมล -->
-          <div class="form-group" id="group-email">
-            <label class="form-label" for="email">อีเมล <span class="req">*</span></label>
-            <div class="input-wrap">
-              <svg class="input-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 5l8 5 8-5M2 5h16v12H2V5z"/></svg>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                class="form-input"
-                placeholder="example@email.com"
-                autocomplete="email"
-                required
-                aria-required="true"
-                aria-describedby="error-email"
-              />
-            </div>
-            <p class="form-error" id="error-email" role="alert" aria-live="polite"></p>
-          </div>
-
-          <!-- Submit -->
-          <button type="submit" class="btn-submit" id="submitBtn">
-            <span class="btn-submit__text">ลงทะเบียนเข้าร่วมงาน</span>
-            <span class="btn-submit__spinner" aria-hidden="true"></span>
-          </button>
-
-        </form>
-
-        <p class="card-version">เวอร์ชัน 1.0.0</p>
-
-      </div>
-
-    </main>
-
-  </div><!-- /layout -->
-
-  <!-- ════════════════════════════
-       SUCCESS MODAL
-  ════════════════════════════ -->
-  <div class="modal-overlay" id="successModal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
-    <div class="modal">
-      <div class="modal__icon" aria-hidden="true">
-        <svg viewBox="0 0 52 52" fill="none">
-          <circle cx="26" cy="26" r="25" stroke="#2563eb" stroke-width="2" fill="#eff6ff"/>
-          <path d="M14 27l8 8 16-16" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Logo -->
+    <div class="hero__logo">
+      <div class="hero__logo-mark">
+        <svg viewBox="0 0 36 36" fill="none" width="32" height="32">
+          <path d="M18 2L34 11V25L18 34L2 25V11L18 2Z" fill="url(#hg)" opacity=".95"/>
+          <circle cx="18" cy="18" r="5" fill="white" opacity=".9"/>
+          <defs>
+            <linearGradient id="hg" x1="2" y1="2" x2="34" y2="34">
+              <stop stop-color="#1d4ed8"/>
+              <stop offset="1" stop-color="#06b6d4"/>
+            </linearGradient>
+          </defs>
         </svg>
       </div>
-      <h2 class="modal__title" id="modal-title">ลงทะเบียนสำเร็จ!</h2>
-      <p class="modal__msg">ขอบคุณที่ลงทะเบียนเข้าร่วม<br /><strong>Tech Summit 2026</strong></p>
-      <p class="modal__email" id="modal-email-note"></p>
-      <button class="modal__btn" id="modalCloseBtn">ปิดหน้าต่างนี้</button>
+      <span class="hero__logo-name">Tech Summit <span class="hero__logo-year">2026</span></span>
     </div>
-  </div>
 
-  <!-- ════════════════════════════
-       ERROR TOAST
-  ════════════════════════════ -->
-  <div class="toast" id="errorToast" role="alert" aria-live="assertive" aria-atomic="true">
-    <svg class="toast__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    <span id="toastMessage"></span>
-  </div>
+    <!-- Main headline -->
+    <h1 class="hero__title">ลงทะเบียนได้แล้ววันนี้!</h1>
+    <p class="hero__sub">ลงทะเบียนล่วงหน้า ตั้งแต่วันนี้ ถึง 30 พฤศจิกายน 2569</p>
 
-  <script src="script.js"></script>
+    <!-- Info cards row -->
+    <div class="hero__info-row">
+      <div class="hero__info-card">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.8" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="13" y2="15"/></svg>
+        <div>
+          <p class="hero__info-label">เตรียมอีเมลที่ใช้งานได้จริง</p>
+          <p class="hero__info-value"><strong>Gmail, Outlook หรือ iCloud</strong></p>
+          <p class="hero__info-note">เพื่อรับการยืนยันและเข้าร่วมงาน</p>
+        </div>
+      </div>
+      <div class="hero__info-card">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.8" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        <div>
+          <p class="hero__info-label">จำนวนสิทธิ์การลงทะเบียน</p>
+          <p class="hero__info-value"><strong>500 ที่นั่งเท่านั้น</strong></p>
+          <p class="hero__info-note">สงวนสิทธิ์ผู้ที่ลงทะเบียนก่อน</p>
+        </div>
+      </div>
+      <div class="hero__info-card">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div>
+          <p class="hero__info-label">วันและเวลาจัดงาน</p>
+          <p class="hero__info-value"><strong>15 พ.ย. 2569</strong></p>
+          <p class="hero__info-note">08:00 – 17:00 น. BITEC บางนา</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     REGISTRATION FORM
+══════════════════════════════════════════ -->
+<section class="reg-section" id="register">
+  <div class="reg-wrap">
+
+    <div class="reg-left">
+      <span class="reg-eyebrow">สมัครเข้าร่วมงาน</span>
+      <h2 class="reg-title">ลงทะเบียนฟรี</h2>
+      <p class="reg-desc">กรอกข้อมูลให้ครบถ้วน ระบบจะบันทึกทันที ไม่มีค่าใช้จ่าย</p>
+
+      <ul class="reg-perks">
+        <li>
+          <span class="reg-perks__icon">✦</span>
+          เข้าร่วม Keynote และ Workshop ฟรีทุก session
+        </li>
+        <li>
+          <span class="reg-perks__icon">✦</span>
+          รับ Certificate of Participation หลังงาน
+        </li>
+        <li>
+          <span class="reg-perks__icon">✦</span>
+          เข้า Networking Zone และ Exhibition ได้ตลอดวัน
+        </li>
+      </ul>
+    </div>
+
+    <div class="reg-right">
+      <form id="registrationForm" class="form" novalidate>
+
+        <div class="form-group" id="group-name">
+          <label class="form-label" for="fullName">ชื่อ-นามสกุล <span class="req">*</span></label>
+          <div class="input-wrap">
+            <svg class="input-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10 10a4 4 0 100-8 4 4 0 000 8zm-7 8a7 7 0 0114 0"/></svg>
+            <input type="text" id="fullName" name="fullName" class="form-input"
+              placeholder="เช่น สมชาย ใจดี" autocomplete="name"
+              required aria-required="true" aria-describedby="error-name"/>
+          </div>
+          <p class="form-error" id="error-name" role="alert" aria-live="polite"></p>
+        </div>
+
+        <div class="form-group" id="group-email">
+          <label class="form-label" for="email">อีเมล <span class="req">*</span></label>
+          <div class="input-wrap">
+            <svg class="input-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 5l8 5 8-5M2 5h16v12H2V5z"/></svg>
+            <input type="email" id="email" name="email" class="form-input"
+              placeholder="example@email.com" autocomplete="email"
+              required aria-required="true" aria-describedby="error-email"/>
+          </div>
+          <p class="form-error" id="error-email" role="alert" aria-live="polite"></p>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <span class="btn-submit__text">ยืนยันการลงทะเบียน →</span>
+          <span class="btn-submit__spinner" aria-hidden="true"></span>
+        </button>
+
+        <p class="form-note">ข้อมูลของท่านจะถูกเก็บเป็นความลับและใช้เพื่อการจัดงานเท่านั้น</p>
+
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <p class="footer__brand">Tech Summit 2026</p>
+    <p>จัดโดย สมาคมเทคโนโลยีไทย &nbsp;·&nbsp; <a href="mailto:info@techsummit2026.com">info@techsummit2026.com</a></p>
+    <p>© 2026 Tech Summit. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="successModal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+  <div class="modal">
+    <div class="modal__icon">
+      <svg viewBox="0 0 52 52" fill="none">
+        <circle cx="26" cy="26" r="25" stroke="#2563eb" stroke-width="2" fill="#eff6ff"/>
+        <path d="M14 27l8 8 16-16" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h2 class="modal__title" id="modal-title">ลงทะเบียนสำเร็จ!</h2>
+    <p class="modal__msg">ขอบคุณที่ลงทะเบียนเข้าร่วม<br/><strong>Tech Summit 2026</strong></p>
+    <p class="modal__email" id="modal-email-note"></p>
+    <button class="modal__btn" id="modalCloseBtn">ปิดหน้าต่างนี้</button>
+  </div>
+</div>
+
+<!-- ERROR TOAST -->
+<div class="toast" id="errorToast" role="alert" aria-live="assertive" aria-atomic="true">
+  <svg class="toast__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <span id="toastMessage"></span>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
