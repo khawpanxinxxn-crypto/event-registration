@@ -16,8 +16,10 @@
 'use strict';
 
 // ── 🔧 CONFIG ────────────────────────────────────────────────
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzNS6peXjJfj6ilxaDQzu2z7juLnRaPoZcoEIKgc4jEhg2rArkAhjTmGE_zIyOY9y5X/exec';
-const MAX_SEATS = 500; // จำนวนที่นั่งสูงสุด
+const APPS_SCRIPT_URL  = 'https://script.google.com/macros/s/AKfycbzNS6peXjJfj6ilxaDQzu2z7juLnRaPoZcoEIKgc4jEhg2rArkAhjTmGE_zIyOY9y5X/exec';
+const SPREADSHEET_ID   = '1ExoDqN-5gaZAY1LyAxwaCVxksrScZsXznz5paGQGDXs';
+const SHEET_TAB_NAME   = 'รายชื่อผู้ลงทะเบียน'; // ชื่อ sheet tab
+const MAX_SEATS        = 500;
 // ─────────────────────────────────────────────────────────────
 
 // localStorage key สำหรับเก็บอีเมลที่เคยลงทะเบียนแล้ว
@@ -245,9 +247,11 @@ async function sendToGoogleSheets(data) {
 
 // ── PROGRESS BAR ──────────────────────────────────────────────
 
+// เก็บจำนวนปัจจุบันไว้ใน memory
+let currentCount = 0;
+
 /**
  * อัปเดต progress bar และตัวเลขจำนวนคน
- * @param {number} count - จำนวนคนที่ลงทะเบียนแล้ว
  */
 function updateProgress(count) {
   currentCount = count;
@@ -275,21 +279,26 @@ function updateProgress(count) {
 /**
  * ดึงจำนวนผู้ลงทะเบียนจาก Apps Script (GET request)
  */
+/**
+ * ดึงจำนวนผู้ลงทะเบียนจาก Google Sheets โดยตรง (CSV public URL)
+ * ไม่มีปัญหา CORS, realtime ทุกครั้งที่โหลดหน้า
+ */
 async function fetchRegisteredCount() {
-  if (APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE') {
-    updateProgress(47);
-    return;
-  }
-
   try {
-    const res  = await fetch(`${APPS_SCRIPT_URL}?action=count`);
-    const data = await res.json();
-    if (typeof data.count === 'number') {
-      updateProgress(data.count);
-    }
+    const sheetUrl = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SHEET_TAB_NAME)}`;
+    const res  = await fetch(sheetUrl);
+    const text = await res.text();
+
+    // นับจำนวนแถว — แต่ละแถวคั่นด้วย \n, แถวแรกคือ header
+    const rows = text.trim().split('\n').filter(r => r.trim() !== '');
+    const count = Math.max(rows.length - 1, 0); // ไม่นับ header
+
+    updateProgress(count);
+    localStorage.setItem('ts2026_count', count);
+
   } catch (err) {
     console.warn('[Progress] ดึงข้อมูลไม่สำเร็จ:', err.message);
-    // ถ้า GET ล้มเหลว ลองใช้ค่าจาก localStorage แทน
+    // fallback — ใช้ค่าจาก localStorage
     const saved = parseInt(localStorage.getItem('ts2026_count') || '0', 10);
     if (saved > 0) updateProgress(saved);
   }
@@ -298,8 +307,8 @@ async function fetchRegisteredCount() {
 // โหลด progress ตอนเปิดหน้าเว็บ
 fetchRegisteredCount();
 
-// เก็บจำนวนปัจจุบันไว้ใน memory เพื่ออัปเดต client-side ได้ทันที
-let currentCount = 0;
+// refresh ทุก 30 วินาที — realtime
+setInterval(fetchRegisteredCount, 30000);
 
 // ── SUBMIT HANDLER ────────────────────────────────────────────
 
