@@ -17,6 +17,7 @@
 
 // ── 🔧 CONFIG ────────────────────────────────────────────────
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzNS6peXjJfj6ilxaDQzu2z7juLnRaPoZcoEIKgc4jEhg2rArkAhjTmGE_zIyOY9y5X/exec';
+const MAX_SEATS = 500; // จำนวนที่นั่งสูงสุด
 // ─────────────────────────────────────────────────────────────
 
 // localStorage key สำหรับเก็บอีเมลที่เคยลงทะเบียนแล้ว
@@ -215,28 +216,20 @@ document.addEventListener('keydown', function (e) {
 /**
  * ส่งข้อมูลไปยัง Google Apps Script
  * @param {{ name: string, email: string }} data
- * @returns {Promise<void>}
+ * @returns {Promise<object>}
  */
 async function sendToGoogleSheets(data) {
   // ตรวจสอบว่าตั้ง URL แล้ว
   if (APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE') {
     console.warn('[Dev Mode] Apps Script URL ยังไม่ได้ตั้งค่า — จำลองการส่งข้อมูลสำเร็จ');
-    // จำลอง delay เหมือน network จริง
     await new Promise(r => setTimeout(r, 1000));
-    return; // ไม่ throw error ใน dev mode
+    return { timestamp: getClientTimestamp(), order: 1 };
   }
-
-  const payload = {
-    name:  data.name,
-    email: data.email,
-  };
 
   const response = await fetch(APPS_SCRIPT_URL, {
     method:  'POST',
-    // Apps Script Web App ต้องรับแบบ text/plain ด้วย no-cors
-    // จึงส่งเป็น JSON string ใน body แทนการใช้ JSON headers
     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-    body:    JSON.stringify(payload),
+    body:    JSON.stringify({ name: data.name, email: data.email }),
   });
 
   if (!response.ok) {
@@ -249,6 +242,64 @@ async function sendToGoogleSheets(data) {
   }
   return result.data || {};
 }
+
+// ── PROGRESS BAR ──────────────────────────────────────────────
+
+/**
+ * อัปเดต progress bar และตัวเลขจำนวนคน
+ * @param {number} count - จำนวนคนที่ลงทะเบียนแล้ว
+ */
+function updateProgress(count) {
+  currentCount = count;
+  const pct = Math.min((count / MAX_SEATS) * 100, 100);
+
+  // progress bar fill
+  const fill = document.getElementById('progressFill');
+  if (fill) {
+    fill.style.width = pct + '%';
+    fill.closest('[role="progressbar"]').setAttribute('aria-valuenow', count);
+  }
+
+  // ตัวเลขจำนวนคน
+  const countEl = document.getElementById('registeredCount');
+  if (countEl) countEl.textContent = count.toLocaleString('th-TH');
+
+  // topbar seats remaining
+  const topbarSeats = document.getElementById('topbarSeats');
+  if (topbarSeats) {
+    const remaining = Math.max(MAX_SEATS - count, 0);
+    topbarSeats.textContent = `เหลืออีก ${remaining.toLocaleString('th-TH')} ที่นั่ง`;
+  }
+}
+
+/**
+ * ดึงจำนวนผู้ลงทะเบียนจาก Apps Script (GET request)
+ */
+async function fetchRegisteredCount() {
+  if (APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE') {
+    updateProgress(47);
+    return;
+  }
+
+  try {
+    const res  = await fetch(`${APPS_SCRIPT_URL}?action=count`);
+    const data = await res.json();
+    if (typeof data.count === 'number') {
+      updateProgress(data.count);
+    }
+  } catch (err) {
+    console.warn('[Progress] ดึงข้อมูลไม่สำเร็จ:', err.message);
+    // ถ้า GET ล้มเหลว ลองใช้ค่าจาก localStorage แทน
+    const saved = parseInt(localStorage.getItem('ts2026_count') || '0', 10);
+    if (saved > 0) updateProgress(saved);
+  }
+}
+
+// โหลด progress ตอนเปิดหน้าเว็บ
+fetchRegisteredCount();
+
+// เก็บจำนวนปัจจุบันไว้ใน memory เพื่ออัปเดต client-side ได้ทันที
+let currentCount = 0;
 
 // ── SUBMIT HANDLER ────────────────────────────────────────────
 
@@ -281,6 +332,17 @@ form.addEventListener('submit', async function (e) {
       timestamp: result.timestamp || getClientTimestamp(),
       order:     result.order    || null,
     });
+
+    // อัปเดต progress bar ทันทีหลังลงทะเบียนสำเร็จ
+    if (result.order) {
+      updateProgress(result.order);
+      localStorage.setItem('ts2026_count', result.order);
+    } else {
+      // ถ้า server ไม่ส่ง order กลับมา นับเพิ่ม client-side ไปก่อน
+      const next = currentCount + 1;
+      updateProgress(next);
+      localStorage.setItem('ts2026_count', next);
+    }
 
   } catch (err) {
     console.error('[Registration Error]', err);
