@@ -27,7 +27,6 @@ const form         = document.getElementById('registrationForm');
 const submitBtn    = document.getElementById('submitBtn');
 const successModal = document.getElementById('successModal');
 const modalCloseBtn= document.getElementById('modalCloseBtn');
-const modalEmailNote = document.getElementById('modal-email-note');
 const errorToast   = document.getElementById('errorToast');
 const toastMessage = document.getElementById('toastMessage');
 
@@ -167,11 +166,28 @@ function showToast(message, duration = 5000) {
 
 // ── MODAL ────────────────────────────────────────────────────
 
-function openModal(email) {
-  modalEmailNote.textContent = `อีเมล: ${email}`;
+function openModal(data) {
+  // ชื่อ
+  document.getElementById('modal-name').textContent = data.name;
+  // อีเมล
+  document.getElementById('modal-email').textContent = data.email;
+  // timestamp — ถ้า server ส่งมาใช้ของ server, ถ้าไม่มีใช้ client time
+  const ts = data.timestamp || getClientTimestamp();
+  document.getElementById('modal-timestamp').textContent = ts;
+  // ลำดับ
+  const order = data.order ? `#${data.order}` : '—';
+  document.getElementById('modal-order').textContent = order;
+
   successModal.classList.add('is-open');
   successModal.setAttribute('aria-hidden', 'false');
   modalCloseBtn.focus();
+}
+
+/** สร้าง timestamp ฝั่ง client (fallback) */
+function getClientTimestamp() {
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  return `${pad(now.getDate())}/${pad(now.getMonth()+1)}/${now.getFullYear()+543} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
 }
 
 function closeModal() {
@@ -231,6 +247,7 @@ async function sendToGoogleSheets(data) {
   if (result.status !== 'success') {
     throw new Error(result.message || 'เกิดข้อผิดพลาดจากเซิร์ฟเวอร์');
   }
+  return result.data || {};
 }
 
 // ── SUBMIT HANDLER ────────────────────────────────────────────
@@ -247,7 +264,7 @@ form.addEventListener('submit', async function (e) {
   submitBtn.setAttribute('aria-busy', 'true');
 
   try {
-    await sendToGoogleSheets({ name, email });
+    const result = await sendToGoogleSheets({ name, email });
 
     // บันทึกอีเมลลง localStorage
     saveRegisteredEmail(email);
@@ -257,8 +274,13 @@ form.addEventListener('submit', async function (e) {
     document.getElementById('group-name').classList.remove('form-group--valid');
     document.getElementById('group-email').classList.remove('form-group--valid');
 
-    // แสดง success modal
-    openModal(email);
+    // แสดง success modal พร้อมข้อมูล
+    openModal({
+      name,
+      email,
+      timestamp: result.timestamp || getClientTimestamp(),
+      order:     result.order    || null,
+    });
 
   } catch (err) {
     console.error('[Registration Error]', err);

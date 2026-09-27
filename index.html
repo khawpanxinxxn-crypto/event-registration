@@ -16,137 +16,10 @@
 ══════════════════════════════════════════ -->
 <header class="hero">
 
-  <!-- Sky gradient background -->
-  <div class="hero__sky" aria-hidden="true"></div>
-
-  <!-- City buildings (SVG) -->
-  <div class="hero__city" aria-hidden="true">
-    <svg viewBox="0 0 1200 340" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
-      <!-- Far buildings (lighter) -->
-      <g opacity=".25" fill="#90c4f8">
-        <rect x="0"   y="180" width="55"  height="160"/>
-        <rect x="10"  y="140" width="30"  height="200"/>
-        <rect x="60"  y="160" width="45"  height="180"/>
-        <rect x="110" y="120" width="35"  height="220"/>
-        <rect x="150" y="150" width="50"  height="190"/>
-        <rect x="205" y="110" width="40"  height="230"/>
-        <rect x="250" y="170" width="30"  height="170"/>
-        <rect x="900" y="150" width="50"  height="190"/>
-        <rect x="955" y="120" width="35"  height="220"/>
-        <rect x="995" y="160" width="45"  height="180"/>
-        <rect x="1045" y="140" width="30" height="200"/>
-        <rect x="1080" y="170" width="55" height="170"/>
-        <rect x="1140" y="110" width="40" height="230"/>
-      </g>
-      <!-- Mid buildings -->
-      <g opacity=".4" fill="#60a5fa">
-        <rect x="280" y="200" width="60"  height="140"/>
-        <rect x="295" y="160" width="28"  height="180"/>
-        <rect x="345" y="180" width="55"  height="160"/>
-        <rect x="405" y="130" width="38"  height="210"/>
-        <rect x="448" y="200" width="28"  height="140"/>
-        <rect x="750" y="200" width="60"  height="140"/>
-        <rect x="815" y="160" width="40"  height="180"/>
-        <rect x="860" y="130" width="35"  height="210"/>
-      </g>
-      <!-- Main tall buildings -->
-      <g fill="#3b82f6" opacity=".6">
-        <!-- Wat Arun silhouette inspired -->
-        <rect x="480" y="80"  width="18"  height="260"/>
-        <rect x="470" y="140" width="38"  height="200"/>
-        <rect x="460" y="200" width="58"  height="140"/>
-        <!-- Modern tower left -->
-        <rect x="530" y="100" width="50"  height="240"/>
-        <rect x="535" y="60"  width="12"  height="280"/>
-        <!-- Skyscraper center -->
-        <rect x="590" y="50"  width="60"  height="290"/>
-        <rect x="605" y="20"  width="10"  height="320"/>
-        <rect x="618" y="30"  width="20"  height="310"/>
-        <!-- Modern tower right -->
-        <rect x="660" y="90"  width="50"  height="250"/>
-        <rect x="668" y="55"  width="12"  height="285"/>
-        <!-- Tower far right -->
-        <rect x="720" y="120" width="45"  height="220"/>
-        <rect x="730" y="80"  width="10"  height="260"/>
-      </g>
-      <!-- Window lights on buildings -->
-      <g fill="white" opacity=".35">
-        <rect x="596" y="70"  width="4" height="4"/>
-        <rect x="604" y="70"  width="4" height="4"/>
-        <rect x="612" y="70"  width="4" height="4"/>
-        <rect x="596" y="82"  width="4" height="4"/>
-        <rect x="612" y="82"  width="4" height="4"/>
-        <rect x="596" y="94"  width="4" height="4"/>
-        <rect x="604" y="94"  width="4" height="4"/>
-        <rect x="538" y="115" width="4" height="4"/>
-        <rect x="546" y="115" width="4" height="4"/>
-        <rect x="554" y="115" width="4" height="4"/>
-        <rect x="538" y="127" width="4" height="4"/>
-        <rect x="554" y="127" width="4" height="4"/>
-        <rect x="664" y="110" width="4" height="4"/>
-        <rect x="672" y="110" width="4" height="4"/>
-        <rect x="680" y="110" width="4" height="4"/>
-        <rect x="664" y="122" width="4" height="4"/>
-        <rect x="680" y="122" width="4" height="4"/>
-      </g>
-      <!-- Ground -->
-      <rect x="0" y="330" width="1200" height="20" fill="#bfdbfe" opacity=".4"/>
-    </svg>
-  </div>
-
-  <!-- Thai flag (left) -->
-  <div class="hero__flag" aria-hidden="true">
-    <svg viewBox="0 0 60 90" width="48" height="72" xmlns="http://www.w3.org/2000/svg">
-      <rect width="60" height="90" fill="#fff"/>
-      <rect width="60" height="18" fill="#dc2626"/>
-      <rect y="18" width="60" height="18" fill="#fff"/>
-      <rect y="36" width="60" height="18" fill="#1d4ed8"/>
-      <rect y="54" width="60" height="18" fill="#fff"/>
-      <rect y="72" width="60" height="18" fill="#dc2626"/>
-    </svg>
-    <div class="hero__flagpole"></div>
-  </div>
-
-  <!-- Floating AI robot mascot (right) -->
-  <div class="hero__mascot" aria-hidden="true">
-    <svg viewBox="0 0 80 100" width="70" height="88" xmlns="http://www.w3.org/2000/svg">
-      <!-- Body -->
-      <rect x="20" y="40" width="40" height="45" rx="10" fill="white" opacity=".9"/>
-      <!-- Head -->
-      <rect x="22" y="18" width="36" height="28" rx="8" fill="white" opacity=".9"/>
-      <!-- Eyes -->
-      <circle cx="33" cy="30" r="5" fill="#3b82f6"/>
-      <circle cx="47" cy="30" r="5" fill="#3b82f6"/>
-      <circle cx="34" cy="29" r="2" fill="white"/>
-      <circle cx="48" cy="29" r="2" fill="white"/>
-      <!-- Antenna -->
-      <line x1="40" y1="18" x2="40" y2="8" stroke="white" stroke-width="2.5" opacity=".8"/>
-      <circle cx="40" cy="6" r="3.5" fill="#60a5fa"/>
-      <!-- Smile -->
-      <path d="M33 37 Q40 42 47 37" stroke="#3b82f6" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <!-- Chest panel -->
-      <rect x="28" y="50" width="24" height="18" rx="4" fill="#eff6ff" opacity=".8"/>
-      <circle cx="34" cy="59" r="3" fill="#3b82f6" opacity=".7"/>
-      <circle cx="40" cy="59" r="3" fill="#60a5fa" opacity=".7"/>
-      <circle cx="46" cy="59" r="3" fill="#06b6d4" opacity=".7"/>
-      <!-- Arms -->
-      <rect x="8"  y="46" width="14" height="8" rx="4" fill="white" opacity=".8"/>
-      <rect x="58" y="46" width="14" height="8" rx="4" fill="white" opacity=".8"/>
-      <!-- Legs -->
-      <rect x="26" y="82" width="10" height="14" rx="4" fill="white" opacity=".8"/>
-      <rect x="44" y="82" width="10" height="14" rx="4" fill="white" opacity=".8"/>
-      <!-- Glow -->
-      <circle cx="40" cy="50" r="36" fill="#3b82f6" opacity=".06"/>
-    </svg>
-  </div>
-
-  <!-- Floating particles -->
-  <div class="hero__particles" aria-hidden="true">
-    <span class="particle particle--1"></span>
-    <span class="particle particle--2"></span>
-    <span class="particle particle--3"></span>
-    <span class="particle particle--4"></span>
-    <span class="particle particle--5"></span>
+  <!-- Clean background blobs -->
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__blob hero__blob--1"></div>
+    <div class="hero__blob hero__blob--2"></div>
   </div>
 
   <!-- Hero content -->
@@ -208,63 +81,58 @@
      REGISTRATION FORM
 ══════════════════════════════════════════ -->
 <section class="reg-section" id="register">
-  <div class="reg-wrap">
+  <div class="reg-card">
 
-    <div class="reg-left">
-      <span class="reg-eyebrow">สมัครเข้าร่วมงาน</span>
+    <!-- Header -->
+    <div class="reg-card__top">
+      <span class="reg-eyebrow">ลงเข้าร่วมงาน</span>
       <h2 class="reg-title">ลงทะเบียนฟรี</h2>
       <p class="reg-desc">กรอกข้อมูลให้ครบถ้วน ระบบจะบันทึกทันที ไม่มีค่าใช้จ่าย</p>
-
-      <ul class="reg-perks">
-        <li>
-          <span class="reg-perks__icon">✦</span>
-          เข้าร่วม Keynote และ Workshop ฟรีทุก session
-        </li>
-        <li>
-          <span class="reg-perks__icon">✦</span>
-          รับ Certificate of Participation หลังงาน
-        </li>
-        <li>
-          <span class="reg-perks__icon">✦</span>
-          เข้า Networking Zone และ Exhibition ได้ตลอดวัน
-        </li>
-      </ul>
     </div>
 
-    <div class="reg-right">
-      <form id="registrationForm" class="form" novalidate>
+    <!-- Perks -->
+    <ul class="reg-perks">
+      <li><span class="reg-perks__dot"></span>เข้าร่วม Keynote และ Workshop ฟรีทุก session</li>
+      <li><span class="reg-perks__dot"></span>รับ Certificate of Participation หลังงาน</li>
+      <li><span class="reg-perks__dot"></span>เข้า Networking Zone และ Exhibition ได้ตลอดวัน</li>
+    </ul>
 
-        <div class="form-group" id="group-name">
-          <label class="form-label" for="fullName">ชื่อ-นามสกุล <span class="req">*</span></label>
-          <div class="input-wrap">
-            <svg class="input-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10 10a4 4 0 100-8 4 4 0 000 8zm-7 8a7 7 0 0114 0"/></svg>
-            <input type="text" id="fullName" name="fullName" class="form-input"
-              placeholder="เช่น สมชาย ใจดี" autocomplete="name"
-              required aria-required="true" aria-describedby="error-name"/>
-          </div>
-          <p class="form-error" id="error-name" role="alert" aria-live="polite"></p>
+    <!-- Divider -->
+    <div class="reg-card__divider"></div>
+
+    <!-- Form -->
+    <form id="registrationForm" class="form" novalidate>
+
+      <div class="form-group" id="group-name">
+        <label class="form-label" for="fullName">ชื่อ-นามสกุล <span class="req">*</span></label>
+        <div class="input-wrap">
+          <svg class="input-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10 10a4 4 0 100-8 4 4 0 000 8zm-7 8a7 7 0 0114 0"/></svg>
+          <input type="text" id="fullName" name="fullName" class="form-input"
+            placeholder="เช่น สมชาย ใจดี" autocomplete="name"
+            required aria-required="true" aria-describedby="error-name"/>
         </div>
+        <p class="form-error" id="error-name" role="alert" aria-live="polite"></p>
+      </div>
 
-        <div class="form-group" id="group-email">
-          <label class="form-label" for="email">อีเมล <span class="req">*</span></label>
-          <div class="input-wrap">
-            <svg class="input-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 5l8 5 8-5M2 5h16v12H2V5z"/></svg>
-            <input type="email" id="email" name="email" class="form-input"
-              placeholder="example@email.com" autocomplete="email"
-              required aria-required="true" aria-describedby="error-email"/>
-          </div>
-          <p class="form-error" id="error-email" role="alert" aria-live="polite"></p>
+      <div class="form-group" id="group-email">
+        <label class="form-label" for="email">อีเมล <span class="req">*</span></label>
+        <div class="input-wrap">
+          <svg class="input-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 5l8 5 8-5M2 5h16v12H2V5z"/></svg>
+          <input type="email" id="email" name="email" class="form-input"
+            placeholder="example@email.com" autocomplete="email"
+            required aria-required="true" aria-describedby="error-email"/>
         </div>
+        <p class="form-error" id="error-email" role="alert" aria-live="polite"></p>
+      </div>
 
-        <button type="submit" class="btn-submit" id="submitBtn">
-          <span class="btn-submit__text">ยืนยันการลงทะเบียน →</span>
-          <span class="btn-submit__spinner" aria-hidden="true"></span>
-        </button>
+      <button type="submit" class="btn-submit" id="submitBtn">
+        <span class="btn-submit__text">ยืนยันการลงทะเบียน →</span>
+        <span class="btn-submit__spinner" aria-hidden="true"></span>
+      </button>
 
-        <p class="form-note">ข้อมูลของท่านจะถูกเก็บเป็นความลับและใช้เพื่อการจัดงานเท่านั้น</p>
+      <p class="form-note">ข้อมูลของท่านจะถูกเก็บเป็นความลับและใช้เพื่อการจัดงานเท่านั้น</p>
 
-      </form>
-    </div>
+    </form>
 
   </div>
 </section>
@@ -280,7 +148,7 @@
   </div>
 </footer>
 
-<!-- SUCCESS MODAL -->
+  <!-- SUCCESS MODAL -->
 <div class="modal-overlay" id="successModal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
   <div class="modal">
     <div class="modal__icon">
@@ -290,8 +158,28 @@
       </svg>
     </div>
     <h2 class="modal__title" id="modal-title">ลงทะเบียนสำเร็จ!</h2>
-    <p class="modal__msg">ขอบคุณที่ลงทะเบียนเข้าร่วม<br/><strong>Tech Summit 2026</strong></p>
-    <p class="modal__email" id="modal-email-note"></p>
+    <p class="modal__subtitle">ระบบได้บันทึกข้อมูลของท่านเรียบร้อยแล้ว</p>
+
+    <!-- Summary card -->
+    <div class="modal__summary">
+      <div class="modal__summary-row">
+        <span class="modal__summary-label">ชื่อ-นามสกุล</span>
+        <span class="modal__summary-value" id="modal-name"></span>
+      </div>
+      <div class="modal__summary-row">
+        <span class="modal__summary-label">อีเมล</span>
+        <span class="modal__summary-value" id="modal-email"></span>
+      </div>
+      <div class="modal__summary-row">
+        <span class="modal__summary-label">วันที่สมัคร</span>
+        <span class="modal__summary-value" id="modal-timestamp"></span>
+      </div>
+      <div class="modal__summary-row modal__summary-row--highlight">
+        <span class="modal__summary-label">ลำดับที่</span>
+        <span class="modal__summary-value" id="modal-order"></span>
+      </div>
+    </div>
+
     <button class="modal__btn" id="modalCloseBtn">ปิดหน้าต่างนี้</button>
   </div>
 </div>
